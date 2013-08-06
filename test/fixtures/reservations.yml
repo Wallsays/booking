@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  restaurant: 
+  start_time: 2013-08-06 17:25:23
+  end_time: 2013-08-06 17:25:23
+  party_size: 
+  active: false
+
+two:
+  user: 
+  restaurant: 
+  start_time: 2013-08-06 17:25:23
+  end_time: 2013-08-06 17:25:23
+  party_size: 
+  active: false

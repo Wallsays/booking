@@ -1,0 +1,24 @@
+<h1><%= @restaurant.name %></h1>
+
+<p>
+  <b>Category:</b>
+  <%= @restaurant.category %>
+</p>
+
+<p>
+  <b>Misc:</b>
+  <%= @restaurant.misc %>
+</p>
+
+<p>
+  <b>lat:</b>
+  <%= @restaurant.lat %>
+</p>
+
+<p>
+  <b>lng:</b>
+  <%= @restaurant.lng %>
+</p>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>

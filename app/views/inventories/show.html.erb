@@ -1,0 +1,26 @@
+<h1>Inventory info</h1>
+
+<p>
+  <b>Restaurant:</b>
+   <%= @inventory.restaurant.name %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @inventory.date %>
+</p>
+
+<p>
+  <b>Time:</b>
+   <%= mtime(@inventory.start_time) %> - 
+   <%= mtime(@inventory.end_time) %>
+</p>
+
+<p>
+  <b>Quantity Available:</b>
+  <%= @inventory.quantity_available %>
+</p>
+
+
+<%= link_to 'Edit', edit_inventory_path(@inventory) %> |
+<%= link_to 'Back', inventories_path %>

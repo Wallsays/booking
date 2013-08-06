@@ -1,0 +1,21 @@
+<h1>All Defaults</h1>
+
+<%= link_to 'New Default', new_default_path %><p />
+
+<% if @defaults %>
+  <% @defaults.each do |default| %>
+      <%= default.restaurant.name %>
+      <%= default.name %> 
+      <%= mtime(default.start_time) %>
+      <%= mtime(default.end_time) %>
+      <%= default.quantity_available %>
+      <%= default.primary %>
+      <%= link_to 'Show', default %>
+      <%= link_to 'Edit', edit_default_path(default) %>
+      <%= link_to 'Destroy', default, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br />
+  <% end %>
+<% end %>
+
+
+<br />

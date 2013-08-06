@@ -1,0 +1,21 @@
+<h1>All Reservations</h1>
+
+<%= link_to 'New Reservation', new_reservation_path %><p />
+
+<% if @reservations %>
+  <% @reservations.each do |reservation| %>
+      <%= reservation.restaurant.name %> 
+      <%= reservation.user.name %> 
+      <%= mtime(reservation.start_time) %>
+      <%= mtime(reservation.end_time) %>
+      <%= reservation.party_size %>
+      <%= reservation.active %>
+      <%= link_to 'Show', reservation %>
+      <%= link_to 'Edit', edit_reservation_path(reservation) %>
+      <%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br />
+  <% end %>
+<% end %>
+
+
+<br />

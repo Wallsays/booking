@@ -1,0 +1,20 @@
+<h1>All Inventories</h1>
+
+<%= link_to 'New Inventory', new_inventory_path %><p />
+
+<% if @inventories %>
+  <% @inventories.each do |inventory| %>
+      <%= inventory.restaurant.name %>
+      <%= inventory.date %> 
+      <%= mtime(inventory.start_time) %>
+      <%= mtime(inventory.end_time) %>
+      <%= inventory.quantity_available %>
+      <%= link_to 'Show', inventory %>
+      <%= link_to 'Edit', edit_inventory_path(inventory) %>
+      <%= link_to 'Destroy', inventory, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br />
+  <% end %>
+<% end %>
+
+
+<br />

@@ -1,0 +1,31 @@
+<h1>Default info</h1>
+
+<p>
+  <b>Restaurant:</b>
+    <%= @default.restaurant.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @default.name %>
+</p>
+
+<p>
+  <b>Time:</b>
+   <%= mtime(@default.start_time) %> - 
+   <%= mtime(@default.end_time) %>
+</p>
+
+<p>
+  <b>Quantity Available:</b>
+  <%= @default.quantity_available %>
+</p>
+
+<p>
+  <b>Primary:</b>
+  <%= @default.primary %>
+</p>
+
+
+<%= link_to 'Edit', edit_default_path(@default) %> |
+<%= link_to 'Back', defaults_path %>

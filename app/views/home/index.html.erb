@@ -1,0 +1,15 @@
+<h1>Welcome to Restaurant Booking System</h1>
+<p>Simple Restaurant Booking System on RoR </p>
+
+<% if user_signed_in? %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Login", new_user_session_path %><br />
+  <%= link_to "Registration", new_user_registration_path %>
+<% end %>
+
+<p />
+ <%= link_to "Restaurants", restaurants_path %><br />
+ <%= link_to "Reservations", reservations_path %><br />
+ <%= link_to "Inventories", inventories_path %><br />
+ <%= link_to "Defaults", defaults_path %><br />
