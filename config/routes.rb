@@ -21,7 +21,7 @@ Booking::Application.routes.draw do
   end 
   
   resources :reservations
-  resources :defaults
+  resources :inventory_templates
   resources :inventories
 
 end

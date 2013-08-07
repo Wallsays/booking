@@ -11,6 +11,11 @@
   <div id="container">
     <%= link_to "Home", root_path %><br />
 
+    <% if user_signed_in? %>
+      <div>Signed in as... <%= current_user.email %></div>
+      <%= link_to "Edit account details", edit_user_registration_path %><br />
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 

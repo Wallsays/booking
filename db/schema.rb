@@ -11,18 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807095201) do
-
-  create_table "defaults", :force => true do |t|
-    t.integer  "restaurant_id"
-    t.string   "name"
-    t.boolean  "primary"
-    t.time     "start_time"
-    t.time     "end_time"
-    t.integer  "quantity_available"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130807111601) do
 
   create_table "inventories", :force => true do |t|
     t.integer  "restaurant_id"
@@ -32,6 +21,17 @@ ActiveRecord::Schema.define(:version => 20130807095201) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.time     "end_time"
+  end
+
+  create_table "inventory_templates", :force => true do |t|
+    t.integer  "restaurant_id"
+    t.string   "name"
+    t.boolean  "primary"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.integer  "quantity_available"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "reservations", :force => true do |t|

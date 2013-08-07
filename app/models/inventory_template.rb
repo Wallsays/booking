@@ -1,4 +1,4 @@
-class Default < ActiveRecord::Base
+class InventoryTemplate < ActiveRecord::Base
   attr_accessible :name, :primary, :quantity_available,   
                   :start_time, :end_time, :restaurant_id
   

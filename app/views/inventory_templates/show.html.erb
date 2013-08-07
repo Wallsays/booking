@@ -1,0 +1,31 @@
+<h1>InventoryTemplate info</h1>
+
+<p>
+  <b>Restaurant:</b>
+    <%= @inventory_template.restaurant.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @inventory_template.name %>
+</p>
+
+<p>
+  <b>Time:</b>
+   <%= mtime(@inventory_template.start_time) %> - 
+   <%= mtime(@inventory_template.end_time) %>
+</p>
+
+<p>
+  <b>Quantity Available:</b>
+  <%= @inventory_template.quantity_available %>
+</p>
+
+<p>
+  <b>Primary:</b>
+  <%= @inventory_template.primary %>
+</p>
+
+
+<%= link_to 'Edit', edit_inventory_template_path(@inventory_template) %> |
+<%= link_to 'Back', inventory_templates_path %>

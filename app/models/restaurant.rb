@@ -7,6 +7,6 @@ class Restaurant < ActiveRecord::Base
 
   has_many :reservations
   has_many :inventories
-  has_many :defaults
+  has_many :inventory_templates
 
 end

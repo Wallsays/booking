@@ -1,0 +1,21 @@
+<h1>All InventoryTemplate</h1>
+
+<%= link_to 'New Inventory Template', new_inventory_template_path %><p />
+
+<% if @inventory_templates %>
+  <% @inventory_templates.each do |inventory_template| %>
+      <%= inventory_template.restaurant.name %>
+      <%= inventory_template.name %> 
+      <%= mtime(inventory_template.start_time) %>
+      <%= mtime(inventory_template.end_time) %>
+      <%= inventory_template.quantity_available %>
+      <%= inventory_template.primary %>
+      <%= link_to 'Show', inventory_template %>
+      <%= link_to 'Edit', edit_inventory_template_path(inventory_template) %>
+      <%= link_to 'Destroy', inventory_template, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br />
+  <% end %>
+<% end %>
+
+
+<br />
