@@ -7,6 +7,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 group :production do
   gem 'pg', '~> 0.14.1'
