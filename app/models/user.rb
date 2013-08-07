@@ -3,15 +3,17 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  
-  devise :omniauthable, :omniauth_providers => [:facebook]
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, :omniauth_providers => [:facebook]
  
   # Setup accessible (or protected) attributes for your model
   attr_accessible :phone,   :email,  :usertype,
                   :password, :password_confirmation, 
                   :remember_me,
                   :name, :provider, :uid
+
+  validates :name,     :presence => true 
+  validates :email,    :presence => true 
 
   has_many :reservations
 
@@ -28,6 +30,7 @@ class User < ActiveRecord::Base
                             provider:auth.provider,
                             uid:auth.uid,
                             email:auth.info.email,
+                            usertype: "User",
                             password:Devise.friendly_token[0,20],
                           )
       end

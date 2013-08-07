@@ -9,17 +9,10 @@ Booking::Application.routes.draw do
   }, :path => '', :path_names => { 
     :sign_in  => "login", 
     :sign_out => "logout", 
-    :sign_up  => "register" 
-  }
+    :sign_up  => "register"
+  } 
 
-  # devise_for :users do 
-  #   resources :reservations
-  # end
-
-  resources :restaurants do 
-    # resources :reservations
-  end 
-  
+  resources :restaurants   
   resources :reservations
   resources :inventory_templates
   resources :inventories
