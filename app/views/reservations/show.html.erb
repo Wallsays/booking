@@ -1,4 +1,9 @@
-<h1>Reservation info</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @reservation.user.username %>
+</p>
 
 <p>
   <b>Restaurant:</b>
@@ -6,14 +11,18 @@
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @reservation.user.name %>
+  <b>Date:</b>
+  <%= @reservation.date %>
 </p>
 
 <p>
-  <b>Time:</b>
-   <%= mtime(@reservation.start_time) %> - 
-   <%= mtime(@reservation.end_time) %>
+  <b>Start time:</b>
+  <%= mtime(@reservation.start_time) %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%= mtime(@reservation.end_time) %>
 </p>
 
 <p>
@@ -25,6 +34,7 @@
   <b>Active:</b>
   <%= @reservation.active %>
 </p>
+
 
 <%= link_to 'Edit', edit_reservation_path(@reservation) %> |
 <%= link_to 'Back', reservations_path %>

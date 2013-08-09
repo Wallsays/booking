@@ -1,5 +1,5 @@
 class Restaurant < ActiveRecord::Base
-  attr_accessible :lat, :lng, :misc, :name, :category
+  attr_accessible :category, :lat, :lng, :misc, :name
 
   validates :name, :presence => true
   validates :lng,   :presence => true
@@ -10,3 +10,5 @@ class Restaurant < ActiveRecord::Base
   has_many :inventory_templates
 
 end
+
+  

@@ -1,21 +1,33 @@
-<h1>All InventoryTemplate</h1>
+<h1>Listing inventory templates</h1>
 
-<%= link_to 'New Inventory Template', new_inventory_template_path %><p />
+<table>
+  <tr>
+    <th>Restaurant</th>
+    <th>Name</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Quantity available</th>
+    <th>Primary</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 
-<% if @inventory_templates %>
-  <% @inventory_templates.each do |inventory_template| %>
-      <%= inventory_template.restaurant.name %>
-      <%= inventory_template.name %> 
-      <%= mtime(inventory_template.start_time) %>
-      <%= mtime(inventory_template.end_time) %>
-      <%= inventory_template.quantity_available %>
-      <%= inventory_template.primary %>
-      <%= link_to 'Show', inventory_template %>
-      <%= link_to 'Edit', edit_inventory_template_path(inventory_template) %>
-      <%= link_to 'Destroy', inventory_template, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <br />
-  <% end %>
+<% @inventory_templates.each do |inventory_template| %>
+  <tr>
+    <td><%= inventory_template.restaurant.name %></td>
+    <td><%= inventory_template.name %></td>
+    <td><%= mtime(inventory_template.start_time) %></td>
+    <td><%= mtime(inventory_template.end_time) %></td>
+    <td><%= inventory_template.quantity_available %></td>
+    <td><%= inventory_template.primary %></td>
+    <td><%= link_to 'Show', inventory_template %></td>
+    <td><%= link_to 'Edit', edit_inventory_template_path(inventory_template) %></td>
+    <td><%= link_to 'Destroy', inventory_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
 <% end %>
-
+</table>
 
 <br />
+
+<%= link_to 'New Inventory template', new_inventory_template_path %>

@@ -14,9 +14,9 @@ en:
       locked: "Your account is locked."
       not_found_in_database: "Invalid email or password."
       timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
+      unauthenticated: "You need to sign in or sign up as User/Owner depending on section you trying to access."
       unconfirmed: "You have to confirm your account before continuing."
-    mailer:
+    mailer: 
       confirmation_instructions:
         subject: "Confirmation instructions"
       reset_password_instructions:

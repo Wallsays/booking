@@ -2,14 +2,14 @@
 
 one:
   name: MyString
-  type: 
-  lat: 1.5
-  lng: 1.5
+  category: MyString
   misc: MyText
+  lat: 9.99
+  lng: 9.99
 
 two:
   name: MyString
-  type: 
-  lat: 1.5
-  lng: 1.5
+  category: MyString
   misc: MyText
+  lat: 9.99
+  lng: 9.99

@@ -1,11 +1,12 @@
 class RestaurantsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index]
+  before_filter :authenticate_owner!, 
+                except: [:index, :show]
   
-   # GET /restaurants
+  # GET /restaurants
   # GET /restaurants.json
   def index
     @restaurants = Restaurant.all
-  
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @restaurants }
@@ -46,14 +47,11 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to @restaurant, 
-          notice: 'Restaurant was successfully created.' }
-        format.json { render json: @restaurant, 
-          status: :created, location: @restaurant }
+        format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
+        format.json { render json: @restaurant, status: :created, location: @restaurant }
       else
         format.html { render action: "new" }
-        format.json { render json: @restaurant.errors, 
-          status: :unprocessable_entity }
+        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -65,13 +63,11 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.update_attributes(params[:restaurant])
-        format.html { redirect_to @restaurant, 
-          notice: 'Restaurant was successfully updated.' }
+        format.html { redirect_to @restaurant, notice: 'Restaurant was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @restaurant.errors, 
-          status: :unprocessable_entity }
+        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -87,6 +83,4 @@ class RestaurantsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
- 
 end

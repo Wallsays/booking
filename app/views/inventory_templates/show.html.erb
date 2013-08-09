@@ -1,8 +1,8 @@
-<h1>InventoryTemplate info</h1>
+<p id="notice"><%= notice %></p>
 
 <p>
   <b>Restaurant:</b>
-    <%= @inventory_template.restaurant.name %>
+  <%= @inventory_template.restaurant.name %>
 </p>
 
 <p>
@@ -11,13 +11,17 @@
 </p>
 
 <p>
-  <b>Time:</b>
-   <%= mtime(@inventory_template.start_time) %> - 
-   <%= mtime(@inventory_template.end_time) %>
+  <b>Start time:</b>
+  <%= mtime(@inventory_template.start_time) %>
 </p>
 
 <p>
-  <b>Quantity Available:</b>
+  <b>End time:</b>
+  <%= mtime(@inventory_template.end_time) %>
+</p>
+
+<p>
+  <b>Quantity available:</b>
   <%= @inventory_template.quantity_available %>
 </p>
 

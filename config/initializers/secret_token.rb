@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Booking::Application.config.secret_token = '72fb4164ebfc9be81b7005d799e71a0a25e573cee59e00adbca8b1a0868e8aa8f6bca7fcd539537fef8ab6268e86a03ba764e9edddb6b4b85a9c78c1d65d4088'
+AuthApp::Application.config.secret_token = 'a988e935566e02cb2301f0e58af5e3191b1e49e70402abda2152771c0ff9dc6dd8d7d7ee7bec4441b0f83644d669b08ef500e06e951d6c240e63a026ac52ecb0'

@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Restaurant Booking</title>
+  <title>AuthApp</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-</head>
-<body>
+</head> 
+<body> 
 
-  <div id="container">
-    <%= link_to "Home", root_path %><br />
+<div id="container">
 
-    <% if user_signed_in? %>
+  <%= link_to "Home", root_path %><br />
+  <% if user_signed_in? or owner_signed_in? %>
+   <% if user_signed_in? %>
       <div>Signed in as... <%= current_user.email %></div>
       <%= link_to "Edit account details", edit_user_registration_path %><br />
-    <% end %>
+    <%else%>
+      <div>Signed in as... <%= current_owner.email %></div>
+      <%= link_to "Edit account details", edit_owner_registration_path %><br />
+    <% end %>   
+  <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <% if flash[:notice] -%>
+    <div id="flash_notice"><%= flash[:notice] %></div>
+  <% elsif flash[:alert] -%>
+    <div id="flash_alert"><%= flash[:alert] %></div>
+  <% elsif flash[:error] -%>
+    <div id="flash_error"><%= flash[:error] %></div>
+  <% end %>
 
-    <%= yield %>
-  </div>
+  <%= yield %>
+ 
+</div>
 
 </body>
 </html>

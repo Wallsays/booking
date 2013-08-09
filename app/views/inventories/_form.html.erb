@@ -4,12 +4,12 @@
   <%= f.input :date, as: :date, start_year: Date.today.year,
               end_year: Date.today.year+1, 
               order: [:day, :month, :year], label: "Date" %>
-  <%= f.input :quantity_available, label: "Quantity Available" %>
   <%= f.input :start_time, :minute_step => 15, label: "Start Time" %>
   <%= f.input :end_time, :minute_step => 15, label: "End Time" %>
- 
+  <%= f.input :quantity_available, label: "Quantity Available" %>
+
   <div class="actions">
     <%= f.button :submit, class: "btn btn-primary" %>
   </div>
-   
+    
 <% end %>

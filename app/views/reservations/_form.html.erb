@@ -1,6 +1,7 @@
 <%= simple_form_for([@reservation], html: { class: "form-horizontal"}) do |f| %>
 
   <%= f.association :restaurant, label: "Restaurant" %>
+  <%= f.input :date, label: "Date" %>
   <%= f.input :start_time, :minute_step => 15, label: "Start Time" %>
   <%= f.input :end_time, :minute_step => 15, label: "End Time" %>
   <%= f.input :party_size, label: "Party Size" %>

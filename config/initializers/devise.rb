@@ -1,12 +1,11 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
-
+  
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
 
@@ -15,7 +14,7 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
-  
+
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
@@ -93,7 +92,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "9d094a2d82c39df5214987c446a93a625b76d206207d259d45f239011dda7478dcdf55816c49220b76a118f3b4d5f9c0ed1438d03cc572def63c0572c555b42f"
+  # config.pepper = "e0c0ce9bedbf9e8950a943baf9f62e4c3cc3000a8eab479c461001d11874b5ce35019677185fd3fdf753771c39dba280a821ba43f272532b37c468df38477825"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -199,7 +198,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
@@ -222,12 +221,23 @@ Devise.setup do |config|
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
-
+ 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  
+
+  require "omniauth-facebook"
+  case Rails.env
+    when "development"
+      config.omniauth :facebook, '572814159448965', '33db6fbc5a147d434b692fbcd688ce51'
+      # config.omniauth :google_oauth2, "APP_ID", "APP_SECRET", { access_type: "offline", approval_prompt: "" }
+    when "production"
+      config.omniauth :facebook, "515632468516870", "12eb33be0069042efb658537afdc7f2a",
+          {:scope => 'email, offline_access', 
+            :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}} 
+  end
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

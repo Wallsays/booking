@@ -5,37 +5,27 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
- 
+  
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :phone,   :email,  :usertype,
-                  :password, :password_confirmation, 
-                  :remember_me,
-                  :name, :provider, :uid
-
-  validates :name,     :presence => true 
-  validates :email,    :presence => true 
-
+  attr_accessible :email, :password, :password_confirmation,
+                  :remember_me, :provider, :uid,
+                  :username, :phone
+   
   has_many :reservations
-
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    if user
-      return user
-    else
-      registered_user = User.where(:email => auth.info.email).first
-      if registered_user
-        return registered_user
-      else
-        user = User.create(name:auth.extra.raw_info.name,
-                            provider:auth.provider,
-                            uid:auth.uid,
-                            email:auth.info.email,
-                            usertype: "User",
-                            password:Devise.friendly_token[0,20],
-                          )
+ 
+  def self.facebook(auth)
+    if user = User.find_by_email(auth.info.email)
+      user.provider = auth.provider
+      user.uid = auth.uid 
+      user   
+    else                                 
+      where(auth.slice(:provider, :uid)).first_or_create do |user|
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.email = auth.info.email
+        user.username = auth.extra.raw_info.name
+        user.password = Devise.friendly_token[0,20]
       end
-       
     end
-  end
-
-end
+  end 
+end  

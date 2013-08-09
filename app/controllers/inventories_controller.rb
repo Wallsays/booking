@@ -1,10 +1,12 @@
 class InventoriesController < ApplicationController
+  before_filter :authenticate_owner!, 
+                except: [:index, :show]
 
   # GET /inventories
   # GET /inventories.json
-  def index
+  def index 
     @inventories = Inventory.all
-  
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @inventories }
@@ -45,14 +47,11 @@ class InventoriesController < ApplicationController
 
     respond_to do |format|
       if @inventory.save
-        format.html { redirect_to @inventory, 
-          notice: 'Inventory was successfully created.' }
-        format.json { render json: @inventory, 
-          status: :created, location: @inventory }
+        format.html { redirect_to @inventory, notice: 'Inventory was successfully created.' }
+        format.json { render json: @inventory, status: :created, location: @inventory }
       else
         format.html { render action: "new" }
-        format.json { render json: @inventory.errors, 
-          status: :unprocessable_entity }
+        format.json { render json: @inventory.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,13 +63,11 @@ class InventoriesController < ApplicationController
 
     respond_to do |format|
       if @inventory.update_attributes(params[:inventory])
-        format.html { redirect_to @inventory, 
-          notice: 'Inventory was successfully updated.' }
+        format.html { redirect_to @inventory, notice: 'Inventory was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @inventory.errors, 
-          status: :unprocessable_entity }
+        format.json { render json: @inventory.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -86,5 +83,4 @@ class InventoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
 end

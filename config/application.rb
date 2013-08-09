@@ -9,9 +9,8 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module Booking
+module AuthApp
   class Application < Rails::Application
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -56,9 +55,6 @@ module Booking
 
     # Enable the asset pipeline
     config.assets.enabled = true
-
-    # defise needed
-    config.assets.initialize_on_precompile = false
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

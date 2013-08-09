@@ -1,4 +1,9 @@
-<h1><%= @restaurant.name %></h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @restaurant.name %>
+</p>
 
 <p>
   <b>Category:</b>
@@ -11,14 +16,15 @@
 </p>
 
 <p>
-  <b>lat:</b>
+  <b>Lat:</b>
   <%= @restaurant.lat %>
 </p>
 
 <p>
-  <b>lng:</b>
+  <b>Lng:</b>
   <%= @restaurant.lng %>
 </p>
+
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>

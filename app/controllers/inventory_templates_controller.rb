@@ -1,16 +1,18 @@
 class InventoryTemplatesController < ApplicationController
+  before_filter :authenticate_owner!, 
+                except: [:index, :show]
   
   # GET /inventory_templates
   # GET /inventory_templates.json
   def index
     @inventory_templates = InventoryTemplate.all
-  
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @inventory_templates }
     end
   end
-
+  
   # GET /inventory_templates/1
   # GET /inventory_templates/1.json
   def show
@@ -45,14 +47,11 @@ class InventoryTemplatesController < ApplicationController
 
     respond_to do |format|
       if @inventory_template.save
-        format.html { redirect_to @inventory_template, 
-          notice: 'Inventory Template was successfully created.' }
-        format.json { render json: @inventory_template, 
-          status: :created, location: @inventory_template }
+        format.html { redirect_to @inventory_template, notice: 'Inventory template was successfully created.' }
+        format.json { render json: @inventory_template, status: :created, location: @inventory_template }
       else
         format.html { render action: "new" }
-        format.json { render json: @inventory_template.errors, 
-          status: :unprocessable_entity }
+        format.json { render json: @inventory_template.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,13 +63,11 @@ class InventoryTemplatesController < ApplicationController
 
     respond_to do |format|
       if @inventory_template.update_attributes(params[:inventory_template])
-        format.html { redirect_to @inventory_template, 
-          notice: 'Inventory Template was successfully updated.' }
+        format.html { redirect_to @inventory_template, notice: 'Inventory template was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @inventory_template.errors, 
-          status: :unprocessable_entity }
+        format.json { render json: @inventory_template.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -85,7 +82,6 @@ class InventoryTemplatesController < ApplicationController
       format.html { redirect_to inventory_templates_url }
       format.json { head :no_content }
     end
-  end
-
+  end 
 
 end

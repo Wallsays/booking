@@ -1,16 +1,31 @@
-<h1>All Restaurants</h1>
+<h1>Listing restaurants</h1>
 
-<%= link_to 'New Restaurant', new_restaurant_path %><p />
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Misc</th>
+    <th>Lat</th>
+    <th>Lng</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr> 
 
 <% @restaurants.each do |restaurant| %>
-    <%= restaurant.name %>
-    <%= restaurant.lat %>
-    <%= restaurant.lng %>
-    <%= link_to 'Show', restaurant %>
-    <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
-    <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <br />
+  <tr>
+    <td><%= restaurant.name %></td>
+    <td><%= restaurant.category %></td>
+    <td><%= restaurant.misc %></td>
+    <td><%= restaurant.lat %></td>
+    <td><%= restaurant.lng %></td>
+    <td><%= link_to 'Show', restaurant %></td>
+    <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+    <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
 <% end %>
-
+</table>
 
 <br />
+
+<%= link_to 'New Restaurant', new_restaurant_path %>
