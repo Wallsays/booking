@@ -9,12 +9,11 @@ class Reservation < ActiveRecord::Base
   validates :start_time,    :presence => true
   validates :end_time,      :presence => true
   validates :party_size,    :presence => true
-  validates :active,        :presence => true
 
   validates :party_size, :numericality => { 
       :greater_than => 0 }
 
   belongs_to :user
   belongs_to :restaurant
-
+  
 end
