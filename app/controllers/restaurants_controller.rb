@@ -44,6 +44,7 @@ class RestaurantsController < ApplicationController
   # POST /restaurants.json
   def create
     @restaurant = Restaurant.new(params[:restaurant])
+    @restaurant.owner_id = current_owner.id
 
     respond_to do |format|
       if @restaurant.save
@@ -60,6 +61,7 @@ class RestaurantsController < ApplicationController
   # PUT /restaurants/1.json
   def update
     @restaurant = Restaurant.find(params[:id])
+    @restaurant.owner_id = current_owner.id
 
     respond_to do |format|
       if @restaurant.update_attributes(params[:restaurant])

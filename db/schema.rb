@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809142123) do
+ActiveRecord::Schema.define(:version => 20130813154422) do
 
   create_table "inventories", :force => true do |t|
     t.integer  "restaurant_id"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20130809142123) do
     t.decimal  "lng",        :precision => 15, :scale => 10
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+    t.integer  "owner_id"
   end
 
   create_table "users", :force => true do |t|
@@ -96,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20130809142123) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string  "uid"
+    t.integer  "uid"
     t.string   "provider"
     t.string   "username"
     t.string   "phone"

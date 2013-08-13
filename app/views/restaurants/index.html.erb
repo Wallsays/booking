@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Owner</th>
     <th>Name</th>
     <th>Category</th>
     <th>Misc</th>
@@ -14,6 +15,7 @@
 
 <% @restaurants.each do |restaurant| %>
   <tr>
+    <td><%= restaurant.owner.owner_name %></td>
     <td><%= restaurant.name %></td>
     <td><%= restaurant.category %></td>
     <td><%= restaurant.misc %></td>
