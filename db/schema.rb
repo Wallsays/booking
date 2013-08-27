@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20130813154422) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.integer  "uid"
+    t.string   "uid"
     t.string   "provider"
     t.string   "username"
     t.string   "phone"

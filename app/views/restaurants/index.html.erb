@@ -2,28 +2,28 @@
 
 <table>
   <tr>
-    <th>Owner</th>
+<!--    <th>Owner</th>-->
     <th>Name</th>
     <th>Category</th>
     <th>Misc</th>
     <th>Lat</th>
     <th>Lng</th>
     <th></th>
-    <th></th>
-    <th></th>
+<!--    <th></th>
+    <th></th>-->
   </tr> 
 
 <% @restaurants.each do |restaurant| %>
   <tr>
-    <td><%= restaurant.owner.owner_name %></td>
+<!--    <td><%= restaurant.owner.owner_name %></td>-->
     <td><%= restaurant.name %></td>
     <td><%= restaurant.category %></td>
     <td><%= restaurant.misc %></td>
     <td><%= restaurant.lat %></td>
     <td><%= restaurant.lng %></td>
     <td><%= link_to 'Show', restaurant %></td>
-    <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-    <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<!--    <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>-->
+<!--    <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
   </tr>
 <% end %>
 </table>

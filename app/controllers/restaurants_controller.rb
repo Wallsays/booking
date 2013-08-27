@@ -6,6 +6,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants.json
   def index
     @restaurants = Restaurant.all
+#    @restaurants = current_owner.restaurants
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +18,10 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1.json
   def show
     @restaurant = Restaurant.find(params[:id])
+#    puts current_user
+    @image_tag_string = "http://maps.google.com/maps/api/staticmap?key=AIzaSyC77WBfl-zki0vS7h9zyKyYg3htKcERvuo&size=550x300&sensor=false&zoom=15"
+    @image_tag_string << "&center=#{@restaurant.lat}%2C#{@restaurant.lng}"
+    @image_tag_string << "&markers=color:purple%7C#{@restaurant.lat}%2C#{@restaurant.lng}"
 
     respond_to do |format|
       format.html # show.html.erb
