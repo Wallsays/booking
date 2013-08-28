@@ -92,8 +92,8 @@ class ReservationsController < ApplicationController
     reservation_to_email_attach = @reservation
     @reservation.destroy
 
-    UserMailer.booking_deleted(current_user, reservation_to_email_attach).deliver
-    OwnerMailer.booking_deleted(reservation_to_email_attach).deliver
+    UserMailer.booking_removed(current_user, reservation_to_email_attach).deliver
+    OwnerMailer.booking_removed(reservation_to_email_attach).deliver
 
     respond_to do |format|
       format.html { redirect_to reservations_url }
