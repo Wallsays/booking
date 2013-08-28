@@ -18,17 +18,19 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1.json
   def show
     @restaurant = Restaurant.find(params[:id])
-#    puts current_user
-    @image_tag_string = "http://maps.google.com/maps/api/staticmap?key=AIzaSyC77WBfl-zki0vS7h9zyKyYg3htKcERvuo&size=550x300&sensor=false&zoom=15"
+    @image_tag_string = "http://maps.google.com/maps/api/staticmap?key=AIzaSyC77WBfl-zki0vS7h9zyKyYg3htKcERvuo&size=550x300"
     @image_tag_string << "&center=#{@restaurant.lat}%2C#{@restaurant.lng}"
-    @image_tag_string << "&markers=color:purple%7C#{@restaurant.lat}%2C#{@restaurant.lng}"
+    # @image_tag_string << "&markers=icon:http://tinyurl.com/o39bbb3%7C#{@restaurant.lat}%2C#{@restaurant.lng}"
+    # @image_tag_string << "&markers=icon:http://tinyurl.com/oyoepzu%7C#{@restaurant.lat}%2C#{@restaurant.lng}"
+    @image_tag_string << "&markers=icon:http://tinyurl.com/pgdsbxb%7C#{@restaurant.lat}%2C#{@restaurant.lng}"
+    @image_tag_string << '&sensor=false&zoom=15'
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @restaurant }
     end
   end
-
+     
   # GET /restaurants/new
   # GET /restaurants/new.json
   def new

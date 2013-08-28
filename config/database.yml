@@ -24,7 +24,7 @@ test:
 production:
   adapter: mysql
   encoding: utf8
-  database: booking_production
+  database: booking_production   
   pool: 5
   username: root
   password: fl4m3
