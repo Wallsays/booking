@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130813154422) do
+ActiveRecord::Schema.define(:version => 20130903052101) do
 
   create_table "inventories", :force => true do |t|
     t.integer  "restaurant_id"
@@ -77,11 +77,24 @@ ActiveRecord::Schema.define(:version => 20130813154422) do
     t.string   "name"
     t.string   "category"
     t.text     "misc"
-    t.decimal  "lat",        :precision => 15, :scale => 10
-    t.decimal  "lng",        :precision => 15, :scale => 10
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.decimal  "lat",                     :precision => 15, :scale => 10
+    t.decimal  "lng",                     :precision => 15, :scale => 10
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
     t.integer  "owner_id"
+    t.integer  "price",      :limit => 2
+    t.string   "cuisine"
+    t.string   "budget"
+  end
+
+  create_table "rewards", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "reseravtion_id"
+    t.integer  "points_total"
+    t.integer  "points_pending"
+    t.text     "description"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
                   :username, :phone
    
   has_many :reservations
+  has_many :rewards
  
   def self.facebook(auth)
     if user = User.find_by_email(auth.info.email)

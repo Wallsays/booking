@@ -53,8 +53,11 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.save
+
         UserMailer.booking_create(current_user, @reservation).deliver
         OwnerMailer.booking_create(@reservation).deliver
+
+        Reward.create(user_id:@reservation.user_id, )
 
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
         format.json { render json: @reservation, status: :created, location: @reservation }
