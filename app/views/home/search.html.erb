@@ -1,0 +1,39 @@
+<h1>Search Results</h1>
+<p>You seached for 
+  <% @search.each do|k,v| %>
+    <%= v %> 
+    <%= k %>
+  <% end %>
+ </p>
+
+<% if @search_results %>
+  <table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Price</th>
+    <th>Budget</th>
+    <th>Cuisine</th>
+    <th>Misc</th>
+    <th>Lat</th>
+    <th>Lng</th>
+    <th></th>
+  </tr> 
+
+  <% @search_results.each do |restaurant| %>
+    <tr>
+      <td><%= restaurant.name %></td>
+      <td><%= restaurant.category %></td>
+      <td><%= restaurant.price %></td>
+      <td><%= restaurant.budget %></td>
+      <td><%= restaurant.cuisine %></td>
+      <td><%= restaurant.misc %></td>
+      <td><%= restaurant.lat %></td>
+      <td><%= restaurant.lng %></td>
+      <td><%= link_to 'Show', restaurant %></td>
+    </tr>
+  <% end %>
+</table>  
+
+<br />
+<% end %>

@@ -57,7 +57,11 @@ class ReservationsController < ApplicationController
         UserMailer.booking_create(current_user, @reservation).deliver
         OwnerMailer.booking_create(@reservation).deliver
 
-        Reward.create(user_id:@reservation.user_id, )
+        Reward.create( user_id: @reservation.user_id, 
+                       reservation_id: @reservation.id, 
+                       points_total: 0, 
+                       points_pending: 5,    
+                       description: "")
 
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
         format.json { render json: @reservation, status: :created, location: @reservation }
@@ -76,6 +80,7 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.update_attributes(params[:reservation])
+        
         UserMailer.booking_update(current_user, @reservation).deliver
         OwnerMailer.booking_update(@reservation).deliver
 

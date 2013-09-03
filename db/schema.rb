@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(:version => 20130903052101) do
 
   create_table "rewards", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "reseravtion_id"
+    t.integer  "reservation_id"
     t.integer  "points_total"
     t.integer  "points_pending"
     t.text     "description"

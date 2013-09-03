@@ -5,7 +5,10 @@ class Restaurant < ActiveRecord::Base
   validates :name, :presence => true
   validates :lng,   :presence => true
   validates :lat,   :presence => true
-  validates :party_size, :numericality => { 
+  validates :price,   :presence => true
+  validates :budget,   :presence => true
+  validates :cuisine,   :presence => true
+  validates :price, :numericality => { 
       :greater_than_or_equal_to => 1, 
       :less_than_or_equal_to => 5  }
 
@@ -16,4 +19,4 @@ class Restaurant < ActiveRecord::Base
   belongs_to :owner
 end
 
-  
+   

@@ -2,7 +2,8 @@ AuthApp::Application.routes.draw do
 
   root :to => "home#index"  
   # get "home/index"
-
+  get 'search', to: 'home#search'
+  
   resources :inventories
   resources :inventory_templates
   resources :reservations

@@ -1,9 +1,46 @@
 <h1>Welcome to Restaurant Booking System</h1>
 <p>Simple Restaurant Booking System on RoR </p>
 
+<%= form_tag("/search", method: "get") do %>
+  <label for="price">Price</label>
+  <%= text_field_tag(:price,) %>
+  <label for="cuisine">Cuisine</label>
+  <%= text_field_tag(:cuisine,) %>
+  <label for="location">Location</label>
+  <%= text_field_tag(:location) %>
+  <%= submit_tag("Search") %>
+<% end %>
+<p />
+
 <% if user_signed_in? or owner_signed_in? %>
   <% if user_signed_in? %>
     <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    <p />
+  
+    <% unless @rewards.empty? %>
+      <table>
+        <tr>
+          <th>Restaurant</th>
+          <th>Points_total</th>
+          <th>Points_pending</th>
+          <th>Description</th>
+        </tr>
+
+      <% if @rewards %>
+      <% @rewards.each do |reward| %>
+        <tr>
+          <td><%= reward.reservation.restaurant.name %></td>
+          <td><%= reward.points_total %></td>
+          <td><%= reward.points_pending %></td>
+          <td><%= reward.description %></td>
+        </tr>
+      <% end %>
+      <% end %>
+      </table>
+    <% end %>
+
+
+
   <%else%>  
     <%= link_to "Logout", destroy_owner_session_path, method: :delete %>
   <% end %>     

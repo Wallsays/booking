@@ -16,7 +16,7 @@ class UserMailer < ActionMailer::Base
           subject: "Reservation updated (#{@reservation.restaurant.name} restaurant)")
   end
 
-  def booking_deleted(user, reservation)
+  def booking_removed(user, reservation)
     @user = user
     @reservation = reservation
     mail( to: @user.email, 
