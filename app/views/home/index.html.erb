@@ -3,9 +3,9 @@
 
 <%= form_tag("/search", method: "get") do %>
   <label for="price">Price</label>
-  <%= text_field_tag(:price,) %>
+  <%= select_tag "price" , "<option selected=\"selected\">Any</option><option>1</option><option>2</option><option>3</option><option>4</option>".html_safe, :multiple => true, :include_blank => false%>  
   <label for="cuisine">Cuisine</label>
-  <%= text_field_tag(:cuisine,) %>
+  <%= select_tag "cuisine" , "<option selected=\"selected\">Any</option><option>Thai Food</option><option>Chinese Food</option><option>Indian Food</option>".html_safe, :multiple => true, :include_blank => false%>
   <label for="location">Location</label>
   <%= text_field_tag(:location) %>
   <%= submit_tag("Search") %>
@@ -54,6 +54,8 @@
 
 <p />
  <b>Section below editable only by Users</b><br />
+ User sees the reservations he made<br />
+ Owner sees the reservations that belong to him restaurants<br />
  <%= link_to "Reservations", reservations_path %><p />
 
  <b>Sections below editable only by Restaurant Owners</b><br />

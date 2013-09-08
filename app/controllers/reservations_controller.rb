@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
-  before_filter :authenticate_user!
-                #, except: [:index, :show]
+  before_filter :authenticate_user!, 
+                except: [:index, :show]
   before_filter :check_who_editing,  
                 except: [:index, :show, :new, :create]
   # before_filter :process_reservation,  
@@ -9,14 +9,16 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = current_user.reservations
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @reservations }
+    if user_signed_in?
+      @reservations = current_user.reservations
+    elsif owner_signed_in?
+      @reservations = []
+      current_owner.restaurants.each {|rest| @reservations += rest.reservations}
+    else
+      redirect_to root_url, alert: "Please, sign in!" 
     end
   end
-
+   
   # GET /reservations/1
   # GET /reservations/1.json
   def show
@@ -54,15 +56,15 @@ class ReservationsController < ApplicationController
     respond_to do |format|
       if @reservation.save
 
-        UserMailer.booking_create(current_user, @reservation).deliver
-        OwnerMailer.booking_create(@reservation).deliver
+        # UserMailer.booking_create(current_user, @reservation).deliver
+        # OwnerMailer.booking_create(@reservation).deliver
 
         Reward.create( user_id: @reservation.user_id, 
                        reservation_id: @reservation.id, 
-                       points_total: 0, 
-                       points_pending: 5,    
+                       points_total: 5*@reservation.party_size, 
+                       points_pending: 5*@reservation.party_size,    
                        description: "")
-
+  
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
         format.json { render json: @reservation, status: :created, location: @reservation }
       else
@@ -71,7 +73,7 @@ class ReservationsController < ApplicationController
       end
     end
   end
- 
+
   # PUT /reservations/1
   # PUT /reservations/1.json
   def update
