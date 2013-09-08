@@ -8,6 +8,7 @@ AuthApp::Application.routes.draw do
   resources :inventory_templates
   resources :reservations
   resources :restaurants
+  resources :rewards
    
   devise_for :owners
   devise_for :users, controllers: { 

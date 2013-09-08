@@ -23,7 +23,10 @@
     <td><%= mtime(reservation.end_time) %></td>
     <td><%= reservation.party_size %></td>
     <td><%= reservation.active %></td>
-    <td><%= link_to 'Show', reservation %></td>
+    <td>
+        <%= link_to 'Show', reservation %><br />
+        <%= link_to 'View Reward', reservation.reward %>
+    </td>
     <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
     <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
